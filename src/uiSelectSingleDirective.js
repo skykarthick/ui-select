@@ -249,6 +249,7 @@ uis.directive('uiSelectSingle', ['$timeout','$compile', function($timeout, $comp
               });
           }
       });
+<<<<<<< HEAD
       
       //Copied from uiSelectMultipleDirective
       function _findCaseInsensitiveDupe(arr) {
@@ -264,6 +265,8 @@ uis.directive('uiSelectSingle', ['$timeout','$compile', function($timeout, $comp
 
         return hasDupe;
       }
+=======
+>>>>>>> 2641bf6... fix(uiSelectSingle): Tagging without multiple with new tags doesn't works
 
       //Copied from uiSelectMultipleDirective
       function _findApproxDupe(haystack, needle) {
