@@ -1,4 +1,4 @@
-﻿  <button class="btn btn-default btn-xs" ng-click="ctrl.enable()">Enable ui-select</button>
+  <button class="btn btn-default btn-xs" ng-click="ctrl.enable()">Enable ui-select</button>
   <button class="btn btn-default btn-xs" ng-click="ctrl.disable()">Disable ui-select</button>
   <button class="btn btn-default btn-xs" ng-click="ctrl.appendToBodyDemo.startToggleTimer()"
           ng-disabled="ctrl.appendToBodyDemo.remainingTime">
@@ -13,14 +13,14 @@
                theme="bootstrap"
                ng-disabled="ctrl.disabled"
                reset-search-input="false"
-               style="width: 300px;"
+               style="width: 600px;"
                title="Choose an address"
                append-to-body="true">
       <ui-select-match placeholder="Enter an address...">{{$select.selected.formatted_address}}</ui-select-match>
       <ui-select-choices repeat="address in ctrl.addresses track by $index"
-               refresh="refreshAddresses($select.search)"
+               refresh="ctrl.refreshAddresses($select.search)"
                refresh-delay="0">
-        <div ng-bind-html="ctrl.address.formatted_address | highlight: $select.search"></div>
+        <div ng-bind-html="address.formatted_address | highlight: $select.search"></div>
       </ui-select-choices>
     </ui-select>
     <p class="alert alert-info positioned">The select dropdown menu should be displayed above this element.</p>

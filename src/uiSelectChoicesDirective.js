@@ -61,10 +61,6 @@ uis.directive('uiSelectChoices',
 
         $select.dropdownPosition = attrs.position ? attrs.position.toLowerCase() : uiSelectConfig.dropdownPosition;        
 
-        scope.$on('$destroy', function() {
-          choices.remove();
-        });
-
         scope.$watch('$select.search', function(newValue) {
           if(newValue && !$select.open && $select.multiple) $select.activate(false, true);
           $select.activeIndex = $select.tagging.isActivated ? -1 : 0;
@@ -79,6 +75,14 @@ uis.directive('uiSelectChoices',
           // $eval() is needed otherwise we get a string instead of a number
           var refreshDelay = scope.$eval(attrs.refreshDelay);
           $select.refreshDelay = refreshDelay !== undefined ? refreshDelay : uiSelectConfig.refreshDelay;
+        });
+
+        scope.$watch('$select.open', function(open) {
+          if (open) {
+            element.attr('role', 'listbox');
+          } else {
+            element.removeAttr('role');
+          }
         });
       };
     }
