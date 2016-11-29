@@ -249,6 +249,21 @@ uis.directive('uiSelectSingle', ['$timeout','$compile', function($timeout, $comp
               });
           }
       });
+      
+      //Copied from uiSelectMultipleDirective
+      function _findCaseInsensitiveDupe(arr) {
+        if ( arr === undefined || $select.search === undefined ) {
+          return false;
+        }
+        var hasDupe = arr.filter( function (origItem) {
+          if ( $select.search.toUpperCase() === undefined || origItem === undefined ) {
+            return false;
+          }
+          return origItem.toUpperCase() === $select.search.toUpperCase();
+        }).length > 0;
+
+        return hasDupe;
+      }
 
       //Copied from uiSelectMultipleDirective
       function _findApproxDupe(haystack, needle) {
